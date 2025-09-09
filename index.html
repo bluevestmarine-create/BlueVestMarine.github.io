@@ -30,7 +30,7 @@
     /* Smooth scrolling with navbar offset */
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 80px; /* adjust if navbar height changes */
+      scroll-padding-top: 80px;
     }
   </style>
 </head>
@@ -42,9 +42,6 @@
       <h2>BLUEVEST <span>MARINE</span></h2>
     </div>
 
-    <!-- Hamburger Button -->
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-
     <nav>
       <ul id="nav-links">
         <li><a href="#about">ABOUT US</a></li>
@@ -53,6 +50,7 @@
         <li><a href="#blogs">BLOGS</a></li>
         <li><a href="#contact">CONTACT</a></li>
       </ul>
+      <div class="hamburger">&#9776;</div>
     </nav>
   </header>
 
@@ -195,33 +193,32 @@
     <p>© 2025 BlueVest Marine. All Rights Reserved.</p>
   </footer>
 
-  <!-- JavaScript for Slider -->
+  <!-- JavaScript -->
   <script>
+    // Hero Slider
     const slides = document.querySelectorAll(".slide");
     let index = 0;
 
     function showSlide() {
-      slides.forEach((slide, i) => {
-        slide.classList.remove("active");
-        if (i === index) slide.classList.add("active");
-      });
+      slides.forEach((slide, i) => slide.classList.remove("active"));
+      slides[index].classList.add("active");
       index = (index + 1) % slides.length;
     }
 
-    setInterval(showSlide, 8000); // Change every 8 seconds
-  </script>
+    setInterval(showSlide, 8000);
 
-  <!-- JavaScript for Hamburger Menu -->
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("nav-links");
-      nav.classList.toggle("show");
-    }
+    // Hamburger Menu Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.navbar ul');
+    const links = document.querySelectorAll('.navbar ul li a');
 
-    // Close menu when clicking a link (on mobile)
-    document.querySelectorAll("#nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        document.getElementById("nav-links").classList.remove("show");
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
       });
     });
   </script>

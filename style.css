@@ -3,7 +3,7 @@
 -------------------------- */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Matches navbar height */
+  scroll-padding-top: 80px;
 }
 
 * {
@@ -23,16 +23,16 @@ body {
    Navbar
 -------------------------- */
 .navbar {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* logo | links | hamburger */
   align-items: center;
   background: #003366;
   color: #fff;
   padding: 15px 50px;
-  flex-wrap: wrap;
   position: sticky;
   top: 0;
-  z-index: 1000; /* Always on top */
+  z-index: 1000;
+  gap: 20px;
 }
 
 .navbar .logo {
@@ -52,9 +52,13 @@ body {
 }
 
 .navbar ul {
-  list-style: none;
   display: flex;
-  gap: 30px;
+  justify-content: flex-end; /* right on desktop */
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
   flex-wrap: wrap;
 }
 
@@ -63,18 +67,21 @@ body {
   color: #fff;
   font-weight: bold;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
 .navbar ul li a:hover {
   color: #00bfff;
 }
 
-/* Hamburger (hidden on desktop) */
+/* Hamburger for mobile */
 .hamburger {
   display: none;
   font-size: 28px;
   cursor: pointer;
   color: #fff;
+  user-select: none;
+  z-index: 1100; /* above menu */
 }
 
 /* -------------------------
@@ -83,7 +90,7 @@ body {
 .hero-slider {
   position: relative;
   width: 100%;
-  height: 100vh; /* Full screen height */
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -104,59 +111,26 @@ body {
   opacity: 1;
 }
 
-/* Hero Text Defaults */
 .hero-text {
   position: absolute;
-  top: 50%;
-  left: 5%;
-  transform: translateY(-50%);
-  color: #fff;
-  text-align: left;
   max-width: 500px;
 }
 
 .hero-text h1 {
-  font-size: 52px;
-  font-weight: bold;
+  font-size: clamp(1.2rem, 4vw, 3rem);
+  line-height: 1.3;
 }
 
 .hero-text p {
-  margin-top: 15px;
-  font-size: 22px;
-  letter-spacing: 1.2px;
+  font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+  margin-top: 12px;
 }
 
-/* Slide Specific Adjustments */
-.slide:first-child .hero-text {
-  top: 20%;
-}
-
-.slide:nth-child(2) .hero-text {
-  top: 15%;
-  left: auto;
-  right: 10%;
-  transform: none;
-  text-align: right;
-  max-width: 450px;
-}
-
-/* Last Slide Responsive Styling */
-.slide:last-child .hero-text h1 {
-  font-size: 2rem;
-  line-height: 1.4;
-}
-
-.slide:last-child .hero-text p {
-  font-size: 1rem;
-}
-
-/* -------------------------
-   Buttons
--------------------------- */
 .btn {
   display: inline-block;
-  margin-top: 15px;
-  padding: 12px 24px;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  padding: clamp(6px, 1.5vw, 12px) clamp(12px, 3vw, 20px);
+  margin-top: 12px;
   background: #003366;
   color: #fff;
   text-decoration: none;
@@ -167,6 +141,41 @@ body {
 .btn:hover {
   background: #0055aa;
   transform: translateY(-2px);
+}
+
+/* Slide Positions */
+.slide:first-child .hero-text {
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  text-align: center;
+  max-width: 600px;
+}
+
+.slide:nth-child(2) .hero-text {
+  right: 10%;
+  top: 15%;
+  left: auto;
+  transform: none;
+  text-align: right;
+  max-width: 450px;
+}
+
+.slide:last-child .hero-text {
+  left: 10%;
+  top: 13%;
+  transform: none;
+  text-align: left;
+  max-width: 500px;
+}
+
+.slide:last-child .hero-text h1 {
+  font-size: 2rem;
+  line-height: 1.4;
+}
+
+.slide:last-child .hero-text p {
+  font-size: 1rem;
 }
 
 /* -------------------------
@@ -227,7 +236,6 @@ body {
   transition: color 0.3s ease-in-out;
 }
 
-/* Hover Effect */
 .service-card:hover {
   transform: translateY(-5px);
 }
@@ -269,14 +277,61 @@ footer {
   .navbar {
     padding: 15px 30px;
   }
+
   .hero-text h1 {
     font-size: 32px;
   }
+
   .hero-text p {
     font-size: 16px;
   }
+
   .content {
     padding: 40px 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Navbar */
+  .navbar {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 15px 20px;
+    position: relative;
+  }
+
+  .hamburger {
+    display: block;
+    justify-self: end;
+  }
+
+  .navbar ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    background: #003366;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+    border-top: 1px solid #0055aa;
+    z-index: 1000;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navbar ul.active {
+    max-height: 500px;
+  }
+
+  .navbar ul li a {
+    font-size: 14px;
+    padding: 5px 0;
+    text-align: center;
   }
 }
 
@@ -284,29 +339,51 @@ footer {
   .hero-slider {
     height: 250px;
   }
+
+  .hero-text {
+    max-width: 90%;
+    left: 5%;
+    right: 5%;
+    bottom: 20%;
+    transform: none;
+    text-align: center;
+  }
+
   .hero-text h1 {
-    font-size: 22px;
+    font-size: 1.2rem;
+    line-height: 1.4;
   }
+
   .hero-text p {
-    font-size: 13px;
+    font-size: 0.9rem;
+    margin-top: 8px;
   }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 8px 14px;
+    margin-top: 10px;
+  }
+
   .content {
     padding: 20px 15px;
   }
+
   footer {
     font-size: 13px;
     padding: 10px;
   }
 
-  /* Last slide tweaks */
   .slide:last-child .hero-text h1 {
     font-size: 1.4rem;
     line-height: 1.4;
   }
+
   .slide:last-child .hero-text p {
     font-size: 0.9rem;
     margin-top: 10px;
   }
+
   .slide:last-child .btn {
     padding: 8px 16px;
     font-size: 0.9rem;
