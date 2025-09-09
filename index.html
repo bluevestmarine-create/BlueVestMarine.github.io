@@ -5,11 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BlueVest Marine</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    /* Smooth scrolling fix with navbar offset */
+    /* Font Styling */
+    .hero-text h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 2.5rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .hero-text p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      color: #f0f0f0;
+    }
+
+    /* Smooth scrolling with navbar offset */
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 80px; /* adjust based on navbar height */
+      scroll-padding-top: 80px; /* adjust if navbar height changes */
     }
   </style>
 </head>
@@ -20,8 +41,12 @@
       <img src="Assets/Logo_1.png" alt="BlueVest Marine Logo"> 
       <h2>BLUEVEST <span>MARINE</span></h2>
     </div>
+
+    <!-- Hamburger Button -->
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
     <nav>
-      <ul>
+      <ul id="nav-links">
         <li><a href="#about">ABOUT US</a></li>
         <li><a href="#services">SERVICES</a></li>
         <li><a href="#training">TRAINING</a></li>
@@ -34,21 +59,21 @@
   <!-- Hero Slider -->
   <section class="hero-slider">
     <div class="slides">
-      <div class="slide active" style="background-image: url('Assets/pic1.jpg');">
+      <div class="slide active" style="background-image: url('Assets/pic4.jpg');">
         <div class="hero-text">
           <h1>BLUEVEST MARINE</h1>
           <p>SHIP FINANCING ADVISORY AND OTHER SERVICES</p>
         </div>
       </div>
 
-      <div class="slide" style="background-image: url('Assets/pic2.jpg');">
+      <div class="slide" style="background-image: url('Assets/pic5.jpg');">
         <div class="hero-text">
           <h1>Our Mission</h1>
           <p>Delivering quality solutions worldwide</p>
         </div>
       </div>
 
-      <div class="slide" style="background-image: url('Assets/pic3.jpg');">
+      <div class="slide" style="background-image: url('Assets/pic6.jpg');">
         <div class="hero-text">
           <h1>FROM VISION TO VOYAGE — <br> YOUR ONE-STOP PARTNER IN SHIP FINANCING & ACQUISITION</h1>
           <p>Helping shipowners acquire, finance, insure, and register their vessels with ease.</p>
@@ -63,10 +88,10 @@
     <div class="column">
       <h2>ABOUT US</h2>
       <p>
-        BlueVest Marine is a trusted partner in the global maritime industry, specializing in ship financing advisory and strategic consulting. With years of experience and strong financial expertise, we provide tailored solutions to help shipowners secure the right funding for their vessels.
+        BlueVest Marine is a trusted partner in the global maritime industry, specializing in ship financing advisory, S&Ps, and associated services. With years of experience and expertise, we deliver tailored solutions that support shipowners throughout the acquisition process — from securing funding and negotiating Sale & Purchase Agreements to arranging insurance, flag requirements, and other related services.
       </p>
       <p>
-        Our team goes beyond traditional advisory, offering innovative financing structures, reliable banking connections, and in-depth market insights. We are committed to empowering clients with clarity, confidence, and long-term resilience in a fast-evolving maritime world.
+        Our team goes beyond traditional advisory by offering innovative solutions, strong industry connections, and in-depth market insights. We are committed to empowering clients with clarity, confidence, and long-term resilience in today’s fast-evolving maritime landscape.
       </p>
     </div>
   </section>
@@ -76,10 +101,10 @@
     <div class="column">
       <h2>WHAT WE DO</h2>
       <p>
-        At BlueVest Marine, we specialize in ship financing and comprehensive maritime advisory services. Our expertise spans loan arrangements, investment strategies, and financial consultancy designed to support shipowners, investors, and operators alike.
+        At BlueVest Marine, we provide comprehensive services and in-depth maritime advisory for shipowners. Our expertise covers loan arrangements, investment strategies, financial consultancy, market analysis, and networking — designed to support shipowners, investors, and operators alike.
       </p>
       <p>
-        Every client has unique requirements, and our dedicated team works closely to provide tailored, result-driven solutions that align with their business goals. By combining deep industry knowledge with financial insight, we ensure that our clients make informed decisions and achieve sustainable growth in the competitive maritime sector.
+        We recognize that every client’s needs are unique. Our team works closely with each one to deliver tailored, result-driven solutions aligned with their business objectives. By combining deep industry knowledge with financial acumen, we help clients make informed decisions and achieve sustainable growth in a competitive maritime sector.
       </p>
     </div>
   </section>
@@ -89,10 +114,10 @@
     <div class="column">
       <h2>SERVICES</h2>
       <p>
-        Many shipowners looking to acquire a vessel are <strong>overwhelmed</strong> with the complex process — from negotiating sale & purchase agreements, arranging insurance, securing financing, to handling flag registration and ownership structures.
+        For many shipowners, acquiring a vessel can feel overwhelming — from negotiating Sale & Purchase Agreements and arranging insurance to securing financing, managing flag registration, and handling ownership structures.
       </p>
       <p>
-        <strong>At BlueVest Marine, we simplify this journey.</strong> Our team guides you from the very first step to final registration, so you don’t need to deal with multiple firms or endless forums. Everything you need, in one place.
+        <strong>At BlueVest Marine, we make this process seamless.</strong> Our team supports you from the very first step to final registration, ensuring you don’t need to engage multiple firms or navigate endless forums. Everything you need is right here, in one place.
       </p>
       <div class="services">
         <div class="service-card">
@@ -111,6 +136,14 @@
           <div class="icon">🚩</div>
           <h3>Flag & Entity Registration</h3>
         </div>
+        <div class="service-card">
+          <div class="icon">⚖️</div>
+          <h3>Legal Advisory</h3>
+        </div>
+        <div class="service-card">
+          <div class="icon">📌</div>
+          <h3>Other Associated Services</h3>
+        </div>
       </div>
     </div>
   </section>
@@ -119,8 +152,6 @@
   <section class="presence">
     <p>
       We are present in <strong>Dubai UAE, Athens Greece, Mumbai India, and Gift City Gujarat India</strong>,
-    </p>
-    <p>
       with correspondents across the globe to support shipowners wherever they are.
     </p>
   </section>
@@ -154,7 +185,7 @@
   <section class="content" id="contact">
     <div class="column">
       <h2>CONTACT US</h2>
-      <p>Email: <a href="mailto:bluevestmarine@gmail.com">contact@bluevestmarine.com</a></p>
+      <p>Email: <a href="mailto:bluevestmarine@gmail.com">bluevestmarine@gmail.com</a></p>
       <a href="mailto:bluevestmarine@gmail.com" class="btn">Get Connected</a>
     </div>
   </section>
@@ -177,7 +208,22 @@
       index = (index + 1) % slides.length;
     }
 
-    setInterval(showSlide, 8000); // Change every 4 seconds
+    setInterval(showSlide, 8000); // Change every 8 seconds
+  </script>
+
+  <!-- JavaScript for Hamburger Menu -->
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      nav.classList.toggle("show");
+    }
+
+    // Close menu when clicking a link (on mobile)
+    document.querySelectorAll("#nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        document.getElementById("nav-links").classList.remove("show");
+      });
+    });
   </script>
 </body>
 </html>

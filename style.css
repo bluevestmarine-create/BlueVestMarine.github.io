@@ -1,7 +1,9 @@
-/* Reset some defaults */
+/* -------------------------
+   Global Reset & Defaults
+-------------------------- */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* 👈 matches your navbar height */
+  scroll-padding-top: 80px; /* Matches navbar height */
 }
 
 * {
@@ -9,7 +11,6 @@ html {
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
-  scroll-behavior: smooth;   /* 👈 Smooth scrolling */
 }
 
 body {
@@ -18,18 +19,20 @@ body {
   background: #fff;
 }
 
-/* Navbar */
+/* -------------------------
+   Navbar
+-------------------------- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #003366;
-  color: white;
+  color: #fff;
   padding: 15px 50px;
   flex-wrap: wrap;
   position: sticky;
   top: 0;
-  z-index: 1000; /* always visible on scroll */
+  z-index: 1000; /* Always on top */
 }
 
 .navbar .logo {
@@ -45,8 +48,7 @@ body {
 
 .navbar .logo h2 {
   font-size: 22px;
-  color: white;
-  margin: 0;
+  color: #fff;
 }
 
 .navbar ul {
@@ -58,7 +60,7 @@ body {
 
 .navbar ul li a {
   text-decoration: none;
-  color: white;
+  color: #fff;
   font-weight: bold;
   transition: color 0.3s ease;
 }
@@ -67,20 +69,22 @@ body {
   color: #00bfff;
 }
 
-/* -----------------
+/* Hamburger (hidden on desktop) */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* -------------------------
    Hero Slider
------------------- */
+-------------------------- */
 .hero-slider {
   position: relative;
   width: 100%;
-  height: 100vh; /* full screen */
+  height: 100vh; /* Full screen height */
   overflow: hidden;
-}
-
-.slides {
-  position: relative;
-  width: 100%;
-  height: 100%;
 }
 
 .slide {
@@ -91,29 +95,23 @@ body {
   height: 100%;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  padding: 20px;
 }
 
 .slide.active {
   opacity: 1;
 }
 
-/* Hero Text Overlay */
+/* Hero Text Defaults */
 .hero-text {
   position: absolute;
   top: 50%;
   left: 5%;
   transform: translateY(-50%);
-  color: white;
+  color: #fff;
   text-align: left;
-  padding: 20px;
   max-width: 500px;
 }
 
@@ -128,18 +126,33 @@ body {
   letter-spacing: 1.2px;
 }
 
-/* Special style for LAST SLIDE */
+/* Slide Specific Adjustments */
+.slide:first-child .hero-text {
+  top: 20%;
+}
+
+.slide:nth-child(2) .hero-text {
+  top: 15%;
+  left: auto;
+  right: 10%;
+  transform: none;
+  text-align: right;
+  max-width: 450px;
+}
+
+/* Last Slide Responsive Styling */
 .slide:last-child .hero-text h1 {
   font-size: 2rem;
   line-height: 1.4;
 }
+
 .slide:last-child .hero-text p {
   font-size: 1rem;
 }
 
-/* -----------------
+/* -------------------------
    Buttons
------------------- */
+-------------------------- */
 .btn {
   display: inline-block;
   margin-top: 15px;
@@ -152,13 +165,13 @@ body {
 }
 
 .btn:hover {
-  background: #0055aa; /* brighter blue */
-  transform: translateY(-2px); /* small lift effect */
+  background: #0055aa;
+  transform: translateY(-2px);
 }
 
-/* -----------------
-   Content
------------------- */
+/* -------------------------
+   Content Sections
+-------------------------- */
 .content {
   display: flex;
   flex-direction: column;
@@ -182,100 +195,121 @@ body {
   color: #333;
 }
 
-/* -----------------
-   Services
------------------- */
+/* -------------------------
+   Services Section
+-------------------------- */
 .services {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  padding: 40px 20px;
+  margin-top: 30px;
 }
 
 .service-card {
   background: #003366;
-  padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
+  padding: 25px 15px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  transition: transform 0.3s, box-shadow 0.3s;
-  color: white;
-}
-
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
 }
 
 .service-card .icon {
-  font-size: 26px;
-  margin-bottom: 10px;
-  color: white;
+  font-size: 40px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease-in-out;
 }
 
 .service-card h3 {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
+  transition: color 0.3s ease-in-out;
 }
 
-/* -----------------
-   Presence
------------------- */
+/* Hover Effect */
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card:hover h3,
+.service-card:hover .icon {
+  color: #66b2ff;
+}
+
+/* -------------------------
+   Global Presence
+-------------------------- */
 .presence {
   background: #0a3d62;
   padding: 40px 20px;
   text-align: center;
   font-size: 18px;
   color: #fff;
-  width: 100%;
-  box-sizing: border-box;
   border-top: 3px solid #0055aa;
   border-bottom: 3px solid #0055aa;
 }
 
-/* -----------------
+/* -------------------------
    Footer
------------------- */
+-------------------------- */
 footer {
   text-align: center;
   background: #003366;
-  color: white;
+  color: #fff;
   padding: 15px;
   margin-top: 30px;
+  font-size: 14px;
 }
 
 /* -------------------------
-   RESPONSIVE DESIGN
+   Responsive Design
 -------------------------- */
 @media (max-width: 1024px) {
   .navbar {
     padding: 15px 30px;
   }
-  .hero-text h1 { font-size: 32px; }
-  .hero-text p { font-size: 16px; }
-  .content { padding: 40px 50px; }
+  .hero-text h1 {
+    font-size: 32px;
+  }
+  .hero-text p {
+    font-size: 16px;
+  }
+  .content {
+    padding: 40px 50px;
+  }
 }
 
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+@media (max-width: 600px) {
+  .hero-slider {
+    height: 250px;
   }
-  .navbar ul {
-    gap: 15px;
+  .hero-text h1 {
+    font-size: 22px;
+  }
+  .hero-text p {
+    font-size: 13px;
+  }
+  .content {
+    padding: 20px 15px;
+  }
+  footer {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  /* Last slide tweaks */
+  .slide:last-child .hero-text h1 {
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+  .slide:last-child .hero-text p {
+    font-size: 0.9rem;
     margin-top: 10px;
   }
-  .hero-slider { height: 300px; }
-  .hero-text h1 { font-size: 26px; }
-  .hero-text p { font-size: 14px; }
-  .content { flex-direction: column; padding: 30px 20px; }
-}
-
-@media (max-width: 480px) {
-  .hero-slider { height: 250px; padding: 10px; }
-  .hero-text h1 { font-size: 22px; }
-  .hero-text p { font-size: 13px; }
-  .navbar ul { flex-direction: column; gap: 10px; margin-top: 15px; }
-  .content { padding: 20px 15px; }
-  footer { font-size: 13px; padding: 10px; }
+  .slide:last-child .btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    margin-top: 12px;
+  }
 }
